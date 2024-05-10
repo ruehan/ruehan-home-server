@@ -34,6 +34,10 @@ const items = {
 		name: "Shelf",
 		size: [2, 3],
 	},
+	bass: {
+		name: "Bass",
+		size: [1, 1],
+	},
 };
 
 const map = {
@@ -42,7 +46,19 @@ const map = {
 	items: [
 		{
 			...items.chair,
-			gridPosition: [0, 0],
+			gridPosition: [16, 25],
+		},
+		{
+			...items.desk,
+			gridPosition: [15, 22],
+		},
+		{
+			...items.bass,
+			gridPosition: [14, 23],
+		},
+		{
+			...items.shelf,
+			gridPosition: [10, 23],
 		},
 	],
 };
