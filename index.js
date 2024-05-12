@@ -64,6 +64,22 @@ const items = {
 		name: "Piano",
 		size: [2, 3],
 	},
+	box: {
+		name: "Box",
+		size: [2, 2],
+	},
+	closet: {
+		name: "Closet",
+		size: [2, 1],
+	},
+	bed: {
+		name: "Bed",
+		size: [3, 6],
+	},
+	wall: {
+		name: "Wall",
+		size: [8, 1],
+	},
 };
 
 const map = {
@@ -116,6 +132,36 @@ const map = {
 			...items.window,
 			gridPosition: [20, 5],
 			rotation: 3,
+		},
+		{
+			...items.box,
+			gridPosition: [10, 18],
+			rotation: 3,
+		},
+		{
+			...items.closet,
+			gridPosition: [14, 0],
+			rotation: 2,
+		},
+		{
+			...items.bed,
+			gridPosition: [17, 0],
+			rotation: 2,
+		},
+		{
+			...items.wall,
+			gridPosition: [9, 22],
+			rotation: 1,
+		},
+		{
+			...items.wall,
+			gridPosition: [9, 14],
+			rotation: 1,
+		},
+		{
+			...items.wall,
+			gridPosition: [9, 0],
+			rotation: 1,
 		},
 	],
 };
