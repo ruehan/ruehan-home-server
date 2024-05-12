@@ -39,6 +39,31 @@ const items = {
 		name: "Bass",
 		size: [1, 1],
 	},
+	table: {
+		name: "Table",
+		size: [2, 3],
+	},
+	mac: {
+		name: "Mac",
+		size: [1, 1],
+	},
+	window: {
+		name: "Window",
+		size: [2, 1],
+		wall: true,
+	},
+	desk_set: {
+		name: "Desk-set",
+		size: [6, 6],
+	},
+	bookcase: {
+		name: "Bookcase",
+		size: [3, 2],
+	},
+	piano: {
+		name: "Piano",
+		size: [2, 3],
+	},
 };
 
 const map = {
@@ -53,6 +78,10 @@ const map = {
 			...items.desk,
 			gridPosition: [15, 22],
 		},
+		// {
+		// 	...items.desk_set,
+		// 	gridPosition: [14, 22],
+		// },
 		{
 			...items.bass,
 			gridPosition: [14, 23],
@@ -60,6 +89,33 @@ const map = {
 		{
 			...items.shelf,
 			gridPosition: [10, 23],
+		},
+		{
+			...items.bookcase,
+			gridPosition: [10, 20],
+			rotation: 1,
+		},
+		// {
+		// 	...items.table,
+		// 	gridPosition: [10, 27],
+		// },
+		{
+			...items.piano,
+			gridPosition: [11, 26],
+		},
+		{
+			...items.mac,
+			gridPosition: [17, 23],
+		},
+		{
+			...items.window,
+			gridPosition: [13, 30],
+		},
+
+		{
+			...items.window,
+			gridPosition: [20, 5],
+			rotation: 3,
 		},
 	],
 };
