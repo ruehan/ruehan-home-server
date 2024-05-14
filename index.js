@@ -12,7 +12,8 @@ import pathfinding from "pathfinding";
 
 const io = new Server({
 	cors: {
-		origin: "http://localhost:3002",
+		origin: "http://ruehan-home.com",
+		// origin: "http://220.119.73.171:3002",
 	},
 });
 
@@ -228,6 +229,7 @@ io.on("connection", (socket) => {
 		hairColor: generateRandomHexColor(),
 		topColor: generateRandomHexColor(),
 		bottomColor: generateRandomHexColor(),
+		nickname: "",
 	});
 
 	socket.emit("hello", { map, characters, id: socket.id, items });
@@ -244,9 +246,6 @@ io.on("connection", (socket) => {
 		}
 		character.position = from;
 		character.path = path;
-
-		console.log(path);
-
 		io.emit("playerMove", character);
 	});
 
@@ -258,5 +257,16 @@ io.on("connection", (socket) => {
 			1
 		);
 		io.emit("characters", characters);
+	});
+
+	socket.on("init", (soc) => {
+		console.log(soc);
+		characters.forEach((character) => {
+			if (character.id === soc.id) {
+				character.nickname = soc.nickname;
+			}
+		});
+		io.emit("characters", characters);
+		socket.emit("hello2", { nickname: soc.nickname });
 	});
 });
