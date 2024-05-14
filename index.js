@@ -232,9 +232,11 @@ io.on("connection", (socket) => {
 		nickname: "",
 	});
 
-	socket.emit("hello", { map, characters, id: socket.id, items });
+	// console.log(characters);
 
 	io.emit("characters", characters);
+
+	socket.emit("hello", { map, characters, id: socket.id, items });
 
 	socket.on("move", (from, to) => {
 		const character = characters.find(
@@ -244,18 +246,44 @@ io.on("connection", (socket) => {
 		if (!path) {
 			return;
 		}
-		character.position = from;
+
+		// console.log(character.position);
+
+		character.position = to;
+
+		// console.log(character.position);
+
 		character.path = path;
 		io.emit("playerMove", character);
 	});
 
-	socket.on("disconnect", (socket) => {
+	socket.on("moveDone", (value) => {
+		characters.forEach((character) => {
+			if (character.id === value.id) {
+				character.path = null;
+			}
+		});
+	});
+
+	// socket.on("disconnect", (socket) => {
+	// 	console.log("user disconnected :", socket.id);
+
+	// 	characters.splice(
+	// 		characters.findIndex((character) => character.id === socket.id),
+	// 		1
+	// 	);
+	// 	io.emit("characters", characters);
+	// });
+
+	socket.on("disconnect", () => {
 		console.log("user disconnected :", socket.id);
 
-		characters.splice(
-			characters.findIndex((character) => character.id === socket.id),
-			1
+		const index = characters.findIndex(
+			(character) => character.id === socket.id
 		);
+		if (index !== -1) {
+			characters.splice(index, 1);
+		}
 		io.emit("characters", characters);
 	});
 
